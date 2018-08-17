@@ -1,0 +1,76 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "jamskingcore20EF.Web", "jamskingcore20EF.Web\jamskingcore20EF.Web.csproj", "{90B3C228-6919-4FBC-934C-67410BF75245}"
+	ProjectSection(ProjectDependencies) = postProject
+		{470CC737-5FA8-4511-B422-02F516870502} = {470CC737-5FA8-4511-B422-02F516870502}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "jamskingcore20EF.Model", "jamskingcore20EF.Model\jamskingcore20EF.Model.csproj", "{470CC737-5FA8-4511-B422-02F516870502}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "jamskingcore20EF.Service", "jamskingcore20EF.Service\jamskingcore20EF.Service.csproj", "{8B472222-229C-40C1-8A3D-E693EED92441}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "jamskingcore20EF.Entity", "jamskingcore20EF.Entity\jamskingcore20EF.Entity.csproj", "{CCAFDCD7-5403-499D-BC91-0C88EB05315D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "jamskingcore20EF.WebApi", "jamskingcore20EF.WebApi\jamskingcore20EF.WebApi.csproj", "{0270E1E2-1506-42E1-B891-0A080D452402}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8B472222-229C-40C1-8A3D-E693EED92441} = {8B472222-229C-40C1-8A3D-E693EED92441}
+		{470CC737-5FA8-4511-B422-02F516870502} = {470CC737-5FA8-4511-B422-02F516870502}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "jamskingcore20EF.LinkStarApi", "jamskingcore20EF.LinkStarApi\jamskingcore20EF.LinkStarApi.csproj", "{6748557B-E991-4BBC-B149-5CBD9414ADC0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8B472222-229C-40C1-8A3D-E693EED92441} = {8B472222-229C-40C1-8A3D-E693EED92441}
+		{470CC737-5FA8-4511-B422-02F516870502} = {470CC737-5FA8-4511-B422-02F516870502}
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "jamskingcore20EF.WebWechart", "jamskingcore20EF.WebWechart\jamskingcore20EF.WebWechart.csproj", "{96E201D1-644D-4477-A949-1C754CD19065}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8B472222-229C-40C1-8A3D-E693EED92441} = {8B472222-229C-40C1-8A3D-E693EED92441}
+		{470CC737-5FA8-4511-B422-02F516870502} = {470CC737-5FA8-4511-B422-02F516870502}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{90B3C228-6919-4FBC-934C-67410BF75245}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90B3C228-6919-4FBC-934C-67410BF75245}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90B3C228-6919-4FBC-934C-67410BF75245}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90B3C228-6919-4FBC-934C-67410BF75245}.Release|Any CPU.Build.0 = Release|Any CPU
+		{470CC737-5FA8-4511-B422-02F516870502}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{470CC737-5FA8-4511-B422-02F516870502}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{470CC737-5FA8-4511-B422-02F516870502}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{470CC737-5FA8-4511-B422-02F516870502}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B472222-229C-40C1-8A3D-E693EED92441}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B472222-229C-40C1-8A3D-E693EED92441}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B472222-229C-40C1-8A3D-E693EED92441}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B472222-229C-40C1-8A3D-E693EED92441}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCAFDCD7-5403-499D-BC91-0C88EB05315D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCAFDCD7-5403-499D-BC91-0C88EB05315D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCAFDCD7-5403-499D-BC91-0C88EB05315D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCAFDCD7-5403-499D-BC91-0C88EB05315D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0270E1E2-1506-42E1-B891-0A080D452402}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0270E1E2-1506-42E1-B891-0A080D452402}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0270E1E2-1506-42E1-B891-0A080D452402}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0270E1E2-1506-42E1-B891-0A080D452402}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6748557B-E991-4BBC-B149-5CBD9414ADC0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6748557B-E991-4BBC-B149-5CBD9414ADC0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6748557B-E991-4BBC-B149-5CBD9414ADC0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6748557B-E991-4BBC-B149-5CBD9414ADC0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{96E201D1-644D-4477-A949-1C754CD19065}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96E201D1-644D-4477-A949-1C754CD19065}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96E201D1-644D-4477-A949-1C754CD19065}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96E201D1-644D-4477-A949-1C754CD19065}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1D54385C-B37E-4BF4-BD4F-A409F130138B}
+	EndGlobalSection
+EndGlobal

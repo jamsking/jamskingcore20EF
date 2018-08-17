@@ -1,0 +1,30 @@
+﻿
+@{
+    ViewData["Title"] = "Subscript";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript" language="javascript">
+    $(document).ready(function () {
+        $("#btnGetAccessToken").click(function () {
+            $.ajax({
+                type: "Get",
+                url: "/Subscript/GetAccessToken",
+                success: function (responseTest) {
+                    $("#txtAccessToken").text(responseTest);
+                }
+            });
+        });
+    });
+</script>
+
+<table>
+    <tr>
+        <td>
+            <div class="title">获取access token</div>
+            <textarea id="txtAccessToken" name="txtAccessToken" rows="4" style="width:500px"></textarea>
+        </td>
+        <td><input class="btncss" id="btnGetAccessToken" type="button" value=" 获取 " /></td>
+    </tr>
+</table>
+

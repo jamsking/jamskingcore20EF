@@ -1,0 +1,10 @@
+﻿@model jamskingcore20EF.Model.HtmlModel.ModalFooter
+
+<div class="modal-footer">
+    <button data-dismiss="modal" id="@Model.CancelButtonID" type="button" class="btn btn-default" onclick="$jams.closeDialog()">@Model.CancelButtonText</button>
+    @if (!Model.OnlyCancelButton)
+    {
+        <button type="button" class="btn btn-success" id="@Model.SubmitButtonID" onclick="onSave()">            
+               @Model.SubmitButtonText</button>
+    }
+</div>

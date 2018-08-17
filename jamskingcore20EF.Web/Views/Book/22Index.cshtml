@@ -1,0 +1,178 @@
+﻿@model IEnumerable<jamskingcore20EF.Model.ViewModel.BookViewModel>
+@using jamskingcore20EF.Model.Model
+@using jamskingcore20EF.Model.HtmlModel
+@using jamskingcore20EF.Model.ViewModel
+@using jamskingcore20EF.Entity.Code
+@section scripts
+{
+    <script src="~/js/book-index.js" asp-append-version="true"></script>
+	<script type="text/javascript">
+            var $table = $("#myTable");
+            var TableInit = function () {
+                var oTable = new Object();
+                oTable.QueryUrl = '@Url.Content("~/Book/GetDSAll")' + '?rnd=' + +Math.random();
+                oTable.Init = function () {
+                    $table.bootstrapTable({
+                        method: 'Get',//数据请求方式
+                        url: oTable.QueryUrl,//请求数据的地址
+						sidePagination:"server",
+                        height: $(window).height() - 100,
+                        striped: true,
+                        pagination: true,
+                        pageNumber: 1,
+                        pageSize: 10,
+                        pageList: [5, 10, 15],
+						responseHandler: responseHandler,
+                        uniqueId: "id",
+                        sidePagination: "server", //服务端请求
+                        queryParams: oTable.queryParams,
+                        queryParamsType: "",
+						clickselected:true,
+　　　　　　　　　　　　　　 sortOrder: "desc",//默认排序方式，降序排列
+                        columns: [
+						{
+                    field: '',
+                    checkbox: true
+                }, {
+                            field: 'id',
+                            title: 'ID',
+                            width: 100,
+                            align: 'center',
+                            valign: 'middle',
+                            sortable: true,
+　　　　　　　　　　　　　　　　　sortname:'id',//排序字段名称
+                            formatter: idFormatter
+                        }, {
+                            field: 'name',
+                            title: '姓名',
+                            width: 100,
+                            align: 'center',
+                            valign: 'middle',
+                            formatter: nameFormatter
+                        }, {
+                            field: 'operate',
+                            title: '操作',
+                            width: 100,
+                            align: 'center',
+                            valign: 'middle',
+                            formatter: operateFormatter,
+                            events: operateEvents
+                        }],
+                        onLoadSuccess: function () {
+                        },
+                        onLoadError: function () {
+                        }
+                    });
+					//请求响应
+        function responseHandler(res) {
+            if (res.IsOk) {
+                return {
+                    "rows": res.rows,
+                    "total": res.total
+                };
+            } else {
+                return {
+                    "rows": [],
+                    "total": 0
+                };
+            }
+        }
+
+       
+        
+
+                }
+                oTable.queryParams = function (params) {
+                    var temp = {
+                        pageSize: params.pageSize,
+                        pageIndex: params.pageNumber,
+                        name: $("#txtName").val(),
+                        sortOrder: params.sortOrder,
+　　　　　　　　　　　　　　 sortName:params.sortName
+                    };
+                    return temp;
+                }
+				
+                function idFormatter(value, row, index) {
+                    return row.id;
+                }
+                function nameFormatter(value, row, index) {
+                    return row.name;
+                }
+                function operateFormatter(value, row, index) {
+                    return '<a id="editBookModal" data-toggle="modal" asp-action="AddEditBook" asp-route-id= "@item.Id" data-target="#modal-action-book" style="cursor:pointer;" title="修改"><span class="glyphicon glyphicon-pencil"></span></a> ' + '<a class="delete" id="delete" style="cursor:pointer;" title="删除"><span class="glyphicon glyphicon-remove"></span></a>';
+                }
+			
+                window.operateEvents = {
+                    'click .edit': function (e, value, row, index) {
+                        //修改操作,将姓名字段改为“小宝，英文名：aspen”
+                        $.ajax({
+                            url: '@Url.Content("~/Book/AddEditBook")',
+                            data: { ids: row.id },
+                            success: function (result) {
+                                if (result.state) {
+                                    layer.msg('修改成功', { tiem: 500, icon: 1 });
+                                    $table.bootstrapTable('refresh');
+                                }
+                            }
+                        });
+                        $table.bootstrapTable('refresh');
+                    },
+                    'click .delete': function (e, value, row, index) {
+                        //删除操作
+                        layer.confirm('您确定要删除该记录吗？', {
+                            btn: ['确定', '取消'] //按钮
+                        }, function () {
+                            $.ajax({
+                                url: '@Url.Content("~/Book/DeleteBook")',
+                                data: { ids: row.id },
+                                success: function (result) {
+                                    if (result.state) {
+                                        layer.msg('删除成功', { tiem: 500, icon: 1 });
+                                        $table.bootstrapTable('refresh');
+                                    }
+                                }
+                            });
+
+                        }, function () {
+
+                        });
+                    }
+                }
+                return oTable;
+            }
+
+            //初始化表格
+            $(function () {
+                var myTable = new TableInit();
+                myTable.Init();
+            });
+            //查询
+            $("#btnSearch").click(function () {
+                $table.bootstrapTable('destroy');
+                var myTable = new TableInit();
+                myTable.Init();
+            });
+            //添加
+            $("#btnAdd").click(function () {
+                $.ajax({
+                    url: '@Url.Content("~/Book/AddEditBook")',
+                    success: function (result) {
+                        if (result.state) {
+                            layer.msg('添加成功', { tiem: 500, icon: 1 });
+                            $table.bootstrapTable('refresh');
+                        }
+                    }
+                });
+            });
+        </script>
+}
+<div class="top-buffer"></div>
+<button type="button" id="btnAdd" class="btn btn-primary">添加新记录</button>
+        <div class="pull-right search" style="width:260px;">
+            <input class="form-control" type="text" id="txtName" placeholder="请输入姓名" style="float:left;width:150px;"> <input class="form-control" type="text" id="txtISBN" placeholder="请输入ISBN" style="float:left;width:150px;">
+            <button type="button" id="btnSearch" class="btn btn-primary">查询</button>
+        </div>
+        <table id="myTable"></table>
+
+@Html.Partial("_Modal", new BootstrapModel { ID = "modal-action-book", AreaLabeledId = "modal-action-book-label", Size = ModalSize.Medium })

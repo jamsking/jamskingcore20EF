@@ -1,0 +1,15 @@
+﻿@model String
+@using jamskingcore20EF.Model.Model
+@using jamskingcore20EF.Model.HtmlModel
+@using jamskingcore20EF.Model.ViewModel
+
+@using (Html.BeginForm())
+{
+    @Html.Partial("_ModalHeader", new ModalHeader { Heading = "Delete Book" })
+
+    <div class="modal-body form-horizontal">
+        Are you want to delete @Model?
+    </div>
+        @Html.Partial("_ModalFooter", new ModalFooter { SubmitButtonText="Delete"})
+}
+
